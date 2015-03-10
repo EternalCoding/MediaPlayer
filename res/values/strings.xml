@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Media Player</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+	<string name="search_result">搜索结果</string>
+	<string name="search_hint">搜 索</string>
+	<string name="search_tile">Search</string>
+	<string name="sureQuit">再按一次退出MediaPlayer</string>
+	
+	<string name="music_part">音  乐</string>
+	<string name="vedio_part">视  频</string>
+	<string name="image_part">图  片</string>
+	<string name="reading_part">书  籍</string>
+	
+	<string name="music_description">心 随 律 动，吾 爱 永 恒</string>
+	<string name="vedio_description">画 面 联 动，此 刻 出 发</string>
+	<string name="image_description">片 片 记 忆，真 实 美 丽</string>
+	<string name="reading_description">破 万 卷 书，行 万 里 路</string>
+	
+</resources>

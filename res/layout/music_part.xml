@@ -1,0 +1,133 @@
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:id="@+id/musicPart"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+    
+    <TextView 
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/music_description"
+        android:layout_centerInParent="true"
+        android:textSize="20sp"/>
+    
+    <RelativeLayout 
+        android:id="@+id/musicControl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/oval_1">
+        
+        
+        <ImageView 
+            android:id="@+id/circle2"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/oval_2"/>
+        
+        
+         <ImageButton 
+            android:id="@+id/playOrPaused"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/play_or_paused"
+            android:src="@drawable/img_music_play_pressed"/>
+        
+        <ImageView
+            android:id="@+id/prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/circle2"
+            android:layout_marginTop="115dip"
+            android:layout_marginRight="10dip"
+            android:src="@drawable/music_prev" />
+
+		<ImageView
+		    android:id="@+id/next"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignBottom="@+id/back"
+		    android:layout_marginLeft="10dip"
+		    android:layout_marginTop="115dip"
+		    android:layout_toRightOf="@id/circle2"
+		    android:src="@drawable/music_next" />
+
+        <ImageView 
+            android:id="@+id/playMode"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/circle2"
+            android:layout_marginTop="95dip"
+            android:src="@drawable/img_appwidget_playmode_repeat"
+            /> 
+    </RelativeLayout>
+    
+   <TextView 
+       android:id="@+id/songName"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textSize="22sp"
+       android:text="1973"
+       android:layout_marginLeft="10dip"
+       android:layout_marginTop="10dip"
+       android:layout_below="@id/musicControl"
+       />"
+    
+    <TextView 
+        android:id="@+id/songInfo" 
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/songName"
+        android:layout_marginTop="2dip"
+        android:layout_marginLeft="10dip"
+        android:text="James Blunt - All the Lost Souls"
+        android:textSize="12sp"/>
+    
+    <TextView 
+        android:id="@+id/startTime"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="12dip"
+        android:layout_marginLeft="10dip"
+        android:layout_below="@id/songInfo"
+        android:text="00:00"
+        android:textColor="@color/black"
+        android:textSize="12sp"/>"
+    
+    
+    
+    <SeekBar 
+        android:id="@+id/songTimeLine"
+        android:layout_below="@id/songInfo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="50dip"
+        android:layout_marginLeft="60dip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dip"
+        android:thumb="@drawable/thumb_image"
+        android:progressDrawable="@drawable/seekbar_progress"/>"
+    
+    
+    
+    
+    
+    
+    <TextView
+        android:id="@+id/endTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/startTime"
+        android:layout_alignBottom="@+id/startTime"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:text="04:42"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+    
+</RelativeLayout>

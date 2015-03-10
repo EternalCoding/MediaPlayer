@@ -1,0 +1,49 @@
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:id="@+id/musicPart"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    
+    <TextView 
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/image_description"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dip"
+        android:textSize="20sp"/>
+   
+    <GridView 
+        android:id="@+id/photoWall"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:columnWidth="90dip"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:padding="5dip"
+        android:gravity="center">
+    </GridView>
+        
+    <!-- 
+    <Button 
+        android:id="@+id/next1"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="next"/>
+    
+     <ImageView 
+        android:id="@+id/test"
+        android:layout_below="@id/next1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>"
+      -->
+        
+    
+    
+    
+    
+    
+</RelativeLayout>

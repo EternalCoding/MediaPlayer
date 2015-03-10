@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#FCFCFC</color>
+    <color name="circle1background">#7B7B7B</color>
+    <color name="touchbg">#001A1F</color>
+    <color name="header">#1F84FF</color>
+    <color name="circle">#5B5B5B</color>
+    <color name="play">#A3F3FF</color>
+    <color name="linecolor">#9D9D9D</color>
+    <color name="playpressed">#FCFCFC</color>
+    <color name="tabselected">#f4842d</color>
+    <color name="black">#000000</color>
+</resources>
