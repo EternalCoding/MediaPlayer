@@ -31,7 +31,6 @@ import android.widget.ImageView;
 public class  ImageFragment extends Fragment {
 	private static final String TAG ="ImageFragment";
 	
-	
 	View view;
 	GestureDetector gd;
 	ActionBar actionBar;
@@ -39,9 +38,7 @@ public class  ImageFragment extends Fragment {
 	
 	private GridView mPhotoWall;
 	private PhotoWallAdapter adapter;
-	
 	private Set<BitmapWorkerTask> taskCollection;
-	
 	public ImageFragment (){
 		super();
 	}
@@ -51,13 +48,9 @@ public class  ImageFragment extends Fragment {
 	@Override 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanece){
 		
-		
-		 
-		
 		actionBar = getActivity().getActionBar();
 		gd = new GestureDetector(new SimpleGestureDetector());
 		view = inflater.inflate(R.layout.img_part, container, false);
-		
 		/*
 		view.setOnTouchListener(new OnTouchListener(){
 
@@ -74,7 +67,6 @@ public class  ImageFragment extends Fragment {
 		mPhotoWall = (GridView) view.findViewById(R.id.photoWall);
 		adapter = new PhotoWallAdapter(this.getActivity(), 0, MusicActivity.mImageList, mPhotoWall);
 		mPhotoWall.setAdapter(adapter);
-		
 		return view;
 	}
 	
@@ -85,7 +77,6 @@ public class  ImageFragment extends Fragment {
 		public boolean onDoubleTap(MotionEvent e) {
 			Log.i(TAG, "Toucharea  DoubleClick");
 			//vibrator.vibrate(30L);
-			 
 			return super.onDoubleTap(e);
 		}
 		@Override
@@ -102,7 +93,6 @@ public class  ImageFragment extends Fragment {
 			if(X > 0 ){
 				if(Y >= 0) {
 					if(X > Y) {
-						 
 						touchValue = MusicActivity.Left;
 						Log.i(TAG, "Toucharea touch event: Left "  );
 					}
@@ -126,7 +116,6 @@ public class  ImageFragment extends Fragment {
 					if(Math.abs(X) > Y) {
 						touchValue = MusicActivity.Right;
 						Log.i(TAG, "Toucharea touch event: Right ,"  );
-						
 					}
 					else {
 						touchValue = MusicActivity.Up;
@@ -146,33 +135,25 @@ public class  ImageFragment extends Fragment {
 			
 			int targetTab = 0;
 			targetTab = actionBar.getSelectedNavigationIndex();
-			
 			Log.i(TAG, "the currented selected tab " + targetTab);
-			
 			switch(touchValue){
-			
 				case MusicActivity.Left:
-					
 					if(targetTab != 0){
 						actionBar.setSelectedNavigationItem(targetTab - 1);
 					}
-					
 					break;
 				case MusicActivity.Right:
 					if(targetTab != 3){
 						actionBar.setSelectedNavigationItem(targetTab + 1);
 					}
-					
 					break;
 			}
-			
 			return true;
 		}
 		@Override
 		public boolean onSingleTapConfirmed(MotionEvent e) {
 			//vibrator.vibrate(30L);
 			Log.i(TAG, "Toucharea SingleClick");
-			 
 		return super.onSingleTapConfirmed(e);
 		}
 		@Override
@@ -181,10 +162,8 @@ public class  ImageFragment extends Fragment {
 		}
 		
 	}
-
 	
 	public class PhotoWallAdapter extends ArrayAdapter<String> implements OnScrollListener{
-
 		private LruCache<String, Bitmap> mMemoryCache;
 		private int mFirstVisibleItem, mVisibleItemCount;
 		private boolean isFirstEnter = true;
@@ -197,12 +176,9 @@ public class  ImageFragment extends Fragment {
 			taskCollection = new HashSet<BitmapWorkerTask>();  
 			int maxMemory = (int) Runtime.getRuntime().maxMemory();
 			int cacheSize = maxMemory/4;
-			
 			int size = cacheSize/1024;
 			Log.i(TAG, "cacheSize :"  + size/1024);
-			
 			mMemoryCache = new LruCache<String, Bitmap>(cacheSize){
-				 
 				@Override  
 		           protected int sizeOf(String key, Bitmap bitmap) {  
 		                return bitmap.getByteCount();  
@@ -211,10 +187,8 @@ public class  ImageFragment extends Fragment {
 			mPhotoWall.setOnScrollListener(this);
 			
 		}
-		
-		
 		@Override  
-	    public View getView(int position, View convertView, ViewGroup parent) {  
+		public View getView(int position, View convertView, ViewGroup parent) {  
 	        final String url = getItem(position);  
 	        View view;  
 	        if (convertView == null) {  
@@ -223,14 +197,12 @@ public class  ImageFragment extends Fragment {
 	            view = convertView;  
 	        }  
 	        final ImageView photo = (ImageView) view.findViewById(R.id.photo);  
-	        // ¸øImageViewÉèÖÃÒ»¸öTag£¬±£Ö¤Òì²½¼ÓÔØÍ¼Æ¬Ê±²»»áÂÒĞò  
+	        // ç»™ImageViewè®¾ç½®ä¸€ä¸ªTagï¼Œä¿è¯å¼‚æ­¥åŠ è½½å›¾ç‰‡æ—¶ä¸ä¼šä¹±åº  
 	        photo.setTag(url);  
 	        setImageView(url, photo);  
 	        return view;  
 	    }  
-	  
-		
-		 private void setImageView(String imageUrl, ImageView imageView) {  
+		private void setImageView(String imageUrl, ImageView imageView) {  
 		        Bitmap bitmap = getBitmapFromMemoryCache(imageUrl);  
 		        if (bitmap != null) {  
 		            imageView.setImageBitmap(bitmap);  
@@ -238,36 +210,28 @@ public class  ImageFragment extends Fragment {
 		            imageView.setImageResource(R.drawable.smiley_28);  
 		        }  
 		    }  
-		
-		 
-		 public void addBitmapToMemoryCache(String key, Bitmap bitmap) {  
+		public void addBitmapToMemoryCache(String key, Bitmap bitmap) {  
 		        if (getBitmapFromMemoryCache(key) == null) {  
 		            mMemoryCache.put(key, bitmap);  
 		        }  
 		    }  
-		 
 		 public Bitmap getBitmapFromMemoryCache(String key) {  
 		        return mMemoryCache.get(key);  
 		    }  
-		 
-
 		@Override
 		public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
 			// TODO Auto-generated method stub
 			mFirstVisibleItem = firstVisibleItem;  
-	        mVisibleItemCount = visibleItemCount; 
+	        	mVisibleItemCount = visibleItemCount; 
 			
-	        Log.i(TAG, "isFirstEnter " + isFirstEnter  );
-	        Log.i(TAG, "1   mFirstVisibleItem: " + mFirstVisibleItem +", mVisibleItemCount : " + mVisibleItemCount);
+			Log.i(TAG, "isFirstEnter " + isFirstEnter  );
+	        	Log.i(TAG, "1   mFirstVisibleItem: " + mFirstVisibleItem +", mVisibleItemCount : " + mVisibleItemCount);
 	        
-	        
-	        if (isFirstEnter && visibleItemCount > 0) {  
-	        	
+	        	if (isFirstEnter && visibleItemCount > 0) { 
 	        	Log.i(TAG, "123");
-	            loadBitmaps(firstVisibleItem, visibleItemCount);  
-	            isFirstEnter = false;  
-	        }  
-	        
+	            	loadBitmaps(firstVisibleItem, visibleItemCount);  
+	            	isFirstEnter = false;  
+			}  
 		}
 
 		@Override
@@ -275,9 +239,7 @@ public class  ImageFragment extends Fragment {
 			// TODO Auto-generated method stub
 			
 			Log.i(TAG, "2   mFirstVisibleItem: " + mFirstVisibleItem +", mVisibleItemCount : " + mVisibleItemCount);
-			
 			if (scrollState == SCROLL_STATE_IDLE) {  
-				
 				loadBitmaps(mFirstVisibleItem, mVisibleItemCount);  
 	        } else {
 	        	cancelAllTasks(); 
@@ -319,16 +281,16 @@ public class  ImageFragment extends Fragment {
 		 
 		 public int calculateInSampleSize(BitmapFactory.Options options,  
 			        int reqWidth, int reqHeight) {  
-			    // Ô´Í¼Æ¬µÄ¸ß¶ÈºÍ¿í¶È  
+			    // æºå›¾ç‰‡çš„é«˜åº¦å’Œå®½åº¦  
 			    final int height = options.outHeight;  
 			    final int width = options.outWidth;  
 			    int inSampleSize = 1;  
 			    if (height > reqHeight || width > reqWidth) {  
-			        // ¼ÆËã³öÊµ¼Ê¿í¸ßºÍÄ¿±ê¿í¸ßµÄ±ÈÂÊ  
+			        // è®¡ç®—å‡ºå®é™…å®½é«˜å’Œç›®æ ‡å®½é«˜çš„æ¯”ç‡  
 			        final int heightRatio = Math.round((float) height / (float) reqHeight);  
 			        final int widthRatio = Math.round((float) width / (float) reqWidth);  
-			        // Ñ¡Ôñ¿íºÍ¸ßÖĞ×îĞ¡µÄ±ÈÂÊ×÷ÎªinSampleSizeµÄÖµ£¬ÕâÑù¿ÉÒÔ±£Ö¤×îÖÕÍ¼Æ¬µÄ¿íºÍ¸ß  
-			        // Ò»¶¨¶¼»á´óÓÚµÈÓÚÄ¿±êµÄ¿íºÍ¸ß¡£  
+			        // é€‰æ‹©å®½å’Œé«˜ä¸­æœ€å°çš„æ¯”ç‡ä½œä¸ºinSampleSizeçš„å€¼ï¼Œè¿™æ ·å¯ä»¥ä¿è¯æœ€ç»ˆå›¾ç‰‡çš„å®½å’Œé«˜  
+			        // ä¸€å®šéƒ½ä¼šå¤§äºç­‰äºç›®æ ‡çš„å®½å’Œé«˜ã€‚  
 			        inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;  
 			    }  
 			    return inSampleSize;  
@@ -336,13 +298,13 @@ public class  ImageFragment extends Fragment {
 		 
 		 public   Bitmap decodeSampledBitmapFromResource(String path,  
 			        int reqWidth, int reqHeight) {  
-			    // µÚÒ»´Î½âÎö½«inJustDecodeBoundsÉèÖÃÎªtrue£¬À´»ñÈ¡Í¼Æ¬´óĞ¡  
+			    // ç¬¬ä¸€æ¬¡è§£æå°†inJustDecodeBoundsè®¾ç½®ä¸ºtrueï¼Œæ¥è·å–å›¾ç‰‡å¤§å°  
 			    final BitmapFactory.Options options = new BitmapFactory.Options();  
 			    options.inJustDecodeBounds = true;  
 			    BitmapFactory.decodeFile(path, options);
-			    // µ÷ÓÃÉÏÃæ¶¨ÒåµÄ·½·¨¼ÆËãinSampleSizeÖµ  
+			    // è°ƒç”¨ä¸Šé¢å®šä¹‰çš„æ–¹æ³•è®¡ç®—inSampleSizeå€¼  
 			    options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);  
-			    // Ê¹ÓÃ»ñÈ¡µ½µÄinSampleSizeÖµÔÙ´Î½âÎöÍ¼Æ¬  
+			    // ä½¿ç”¨è·å–åˆ°çš„inSampleSizeå€¼å†æ¬¡è§£æå›¾ç‰‡  
 			    options.inJustDecodeBounds = false;  
 			    return BitmapFactory.decodeFile(path, options);  
 			}  
@@ -351,17 +313,17 @@ public class  ImageFragment extends Fragment {
 		public  class BitmapWorkerTask extends AsyncTask<String, Void, Bitmap> {  
 			  
 		        /** 
-		         * Í¼Æ¬µÄURLµØÖ· 
+		         * å›¾ç‰‡çš„URLåœ°å€ 
 		         */  
 		        private String imageUrl;  
 		  
 		        @Override  
 		        protected Bitmap doInBackground(String... params) {  
 		            imageUrl = params[0];  
-		            // ÔÚºóÌ¨¿ªÊ¼ÏÂÔØÍ¼Æ¬  
+		            // åœ¨åå°å¼€å§‹ä¸‹è½½å›¾ç‰‡  
 		            Bitmap bitmap = decodeSampledBitmapFromResource(imageUrl, 100, 100); 
 		            if (bitmap != null) {  
-		                // Í¼Æ¬ÏÂÔØÍê³Éºó»º´æµ½LrcCacheÖĞ  
+		                // å›¾ç‰‡ä¸‹è½½å®Œæˆåç¼“å­˜åˆ°LrcCacheä¸­  
 		                addBitmapToMemoryCache(imageUrl, bitmap);  
 		            }  
 		            return bitmap;  
@@ -370,7 +332,7 @@ public class  ImageFragment extends Fragment {
 		        @Override  
 		        protected void onPostExecute(Bitmap bitmap) {  
 		            super.onPostExecute(bitmap);  
-		            // ¸ù¾İTagÕÒµ½ÏàÓ¦µÄImageView¿Ø¼ş£¬½«ÏÂÔØºÃµÄÍ¼Æ¬ÏÔÊ¾³öÀ´¡£  
+		            // æ ¹æ®Tagæ‰¾åˆ°ç›¸åº”çš„ImageViewæ§ä»¶ï¼Œå°†ä¸‹è½½å¥½çš„å›¾ç‰‡æ˜¾ç¤ºå‡ºæ¥ã€‚  
 		            ImageView imageView = (ImageView) mPhotoWall.findViewWithTag(imageUrl);  
 		            if (imageView != null && bitmap != null) {  
 		                imageView.setImageBitmap(bitmap);  
